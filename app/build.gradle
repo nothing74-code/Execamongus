@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.myexecutor.app'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.myexecutor.app"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -26,6 +26,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     externalNativeBuild {
@@ -33,6 +41,11 @@ android {
             path "src/main/cpp/CMakeLists.txt"
             version "3.22.1"
         }
+    }
+
+    // Temporarily disable missing default resources error
+    androidResources {
+        noCompress 'null'
     }
 }
 
